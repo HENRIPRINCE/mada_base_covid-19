@@ -36,55 +36,55 @@ var_fs_groupe=""
 
 class Adala():
     def __init__(self):
-        self.sig_host = "PG_HOST"
-        self.sig_port = "PG_PORTS"
+		self.sig_host = "PG_HOST"
+		self.sig_port = "PG_PORTS"
 		self.role_carte = "PG_ROLE"
-        self.mdp_carte = "PG_MDP"
-        self.bd_stat = "bd_reference"
-        self.bd_covid = "bd_covid19"
-        self.con_covid = psycopg2.connect("dbname='" + self.bd_covid + "' user='" + self.role_carte + "' password='" + self.mdp_carte + "' host='" + self.sig_host + "' port='"+ self.sig_port +"'")
-        self.con_stat = psycopg2.connect("dbname='" + self.bd_stat + "' user='" + self.role_carte + "' password='" + self.mdp_carte + "' host='" + self.sig_host + "' port='"+ self.sig_port +"'")
-        self.isa_averina = 0
-        self.isa_niv_reg =0
-        self.isa_niv_dis =0
-        self.isa_niv_com =0
-        self.isa_niv_reg_2 =0
-        self.isa_niv_dis_2 =0
-        self.new_enreg = 0
-        self.norme_fs = 0
-        self.error_fs = 0
-        self.tbl_brute ="public.tbl_covid19_brute"
-        self.tbl_stat ="data_ocha.mdg_admbnda_adm4_with_cp"
-        self.tbl_cvd_ocha ="public.tbl_covid19_ocha"
-        self.tbl_cvd_eror ="public.tbl_covid_error_ocha"
-        self.tbl_stat_loc="data_ocha.mdg_query_loc"
-        self.nom_log = "LOG_COVID_" + datetime.now().strftime('%Y%m%d_%H%M') + ".txt"
-        self.dir_log = path_data_tmp +"/" + self.nom_log
-        self.nbre_reg_trouve = 0
-        self.nbre_dis_trouve = 0
-        self.nbre_com_trouve = 0
-        self.nbre_fs_trouve = 0
-        self.nbre_fs_localise = 0
-        self.nbre_fs_groupe = 0
-        self.nbre_fs_null = 0
-        self.nbre_maj_fs = 0
-        self.nbre_maj_reg =0
-        self.nbre_maj_dis =0
-        self.nbre_maj_com =0
-        
-        self.view_fs_ipm ="public.view_fs_ipm"
-        self.tbl_error_ocha_fs ="public.tbl_covid_error_ocha_fsanitaire"
-        #self.error_dm = ["---", "--", "-", "None", "Manquant", "Manquante", "NA", '']
-        self.error_dm = ["None", "NONE", "Manquant", "Manquante","NA",'']
-        self.attention = ['67HA', 'ANDAVAMAMBA', 'ANDOHATAPENAKA','ANDRANOMANALINA',"ANDREFAN'AMBOHIJANAHARY",'ANJANAHARY', 'ANOSIBE', 'ANOSIZATO', 'ANTETEZANA','FIADANANA','MANDRANGOBATO','MANJAKARAY','SOANIERANA','ANTOHOMADINIKA']
-        self.attention_niv2 = ['AMPANDRANA', 'ANALAMAHITSY','ANKADINDRAMAMY','AMBOHIDAHY', 'IVATO']
-        
-        self.fkt_1_2_3 = ['ANDOHATAPENAKA', 'ANOSIBE ANDREFANA','ANOSIZATO ATSINANANA','ANTETEZANAFOVOANY', 'ANDAVAMAMBA ANJEZIKA', 'ANDAVAMAMBA ANATIHAZO', 'MANDRANGOBATO']
-        
-        self.class_dis_01 = ['LOT', 'LOGEMENT', 'LGMT', 'LOGT', 'VILLA', 'BIS', 'TER', 'BLOC', 'PARCELLE', 'SECTEUR', 'FOYER', 'RESIDENCE']
-        self.class_secteur = ['III', 'II', 'IIIG-I', 'III-I', 'IIIH-I', 'IIA', 'IIB', 'IIC', 'IID', 'IIN','IIO','IIS','IIIJ','IIIL','IIIN']
-        self.all_orientation =['AMBONY', 'AMBANY', 'AVOFOANY', 'AFOVONY', 'AFOVOANY', 'ANTSINANA', 'ANDREFANA', 'AVARATRA', 'ATSIMO', 'ATSINANANA', 'CENTRE', 'SUD', 'NORD', 'OUEST', 'EST', 'CITE', 'BLOC', 'TANANA', 'NORD-EST','NORD-OUEST', 'NE','NO', 'SUD-EST','SUD-OUEST', 'SE','SO']
-        self.all_orientation_vrai =['AMBONY', 'AMBANY', 'AFOVOANY', 'AFOVOANY', 'AFOVOANY', 'ATSINANA', 'ANDREFANA', 'AVARATRA', 'ATSIMO', 'ATSINANANA', 'AFOVOANY', 'ATSIMO', 'AVARATRA', 'ANDREFANA', 'ATSINANANA', 'CITE', 'BLOC', 'TANANA', 'AVARATRA ATSINANANA', 'AVARATRA AANDREFANA', 'AVARATRA ATSINANANA', 'AVARATRA ANDREFANA', 'ATSIMO ATSINANANA', 'ATSIMO ANDREFANA', 'ATSIMO ATSINANANA', 'ATSIMO ANDREFANA']
+		self.mdp_carte = "PG_MDP"
+		self.bd_stat = "bd_reference"
+		self.bd_covid = "bd_covid19"
+		self.con_covid = psycopg2.connect("dbname='" + self.bd_covid + "' user='" + self.role_carte + "' password='" + self.mdp_carte + "' host='" + self.sig_host + "' port='"+ self.sig_port +"'")
+		self.con_stat = psycopg2.connect("dbname='" + self.bd_stat + "' user='" + self.role_carte + "' password='" + self.mdp_carte + "' host='" + self.sig_host + "' port='"+ self.sig_port +"'")
+		self.isa_averina = 0
+		self.isa_niv_reg =0
+		self.isa_niv_dis =0
+		self.isa_niv_com =0
+		self.isa_niv_reg_2 =0
+		self.isa_niv_dis_2 =0
+		self.new_enreg = 0
+		self.norme_fs = 0
+		self.error_fs = 0
+		self.tbl_brute ="public.tbl_covid19_brute"
+		self.tbl_stat ="data_ocha.mdg_admbnda_adm4_with_cp"
+		self.tbl_cvd_ocha ="public.tbl_covid19_ocha"
+		self.tbl_cvd_eror ="public.tbl_covid_error_ocha"
+		self.tbl_stat_loc="data_ocha.mdg_query_loc"
+		self.nom_log = "LOG_COVID_" + datetime.now().strftime('%Y%m%d_%H%M') + ".txt"
+		self.dir_log = path_data_tmp +"/" + self.nom_log
+		self.nbre_reg_trouve = 0
+		self.nbre_dis_trouve = 0
+		self.nbre_com_trouve = 0
+		self.nbre_fs_trouve = 0
+		self.nbre_fs_localise = 0
+		self.nbre_fs_groupe = 0
+		self.nbre_fs_null = 0
+		self.nbre_maj_fs = 0
+		self.nbre_maj_reg =0
+		self.nbre_maj_dis =0
+		self.nbre_maj_com =0
+
+		self.view_fs_ipm ="public.view_fs_ipm"
+		self.tbl_error_ocha_fs ="public.tbl_covid_error_ocha_fsanitaire"
+		#self.error_dm = ["---", "--", "-", "None", "Manquant", "Manquante", "NA", '']
+		self.error_dm = ["None", "NONE", "Manquant", "Manquante","NA",'']
+		self.attention = ['67HA', 'ANDAVAMAMBA', 'ANDOHATAPENAKA','ANDRANOMANALINA',"ANDREFAN'AMBOHIJANAHARY",'ANJANAHARY', 'ANOSIBE', 'ANOSIZATO', 'ANTETEZANA','FIADANANA','MANDRANGOBATO','MANJAKARAY','SOANIERANA','ANTOHOMADINIKA']
+		self.attention_niv2 = ['AMPANDRANA', 'ANALAMAHITSY','ANKADINDRAMAMY','AMBOHIDAHY', 'IVATO']
+
+		self.fkt_1_2_3 = ['ANDOHATAPENAKA', 'ANOSIBE ANDREFANA','ANOSIZATO ATSINANANA','ANTETEZANAFOVOANY', 'ANDAVAMAMBA ANJEZIKA', 'ANDAVAMAMBA ANATIHAZO', 'MANDRANGOBATO']
+
+		self.class_dis_01 = ['LOT', 'LOGEMENT', 'LGMT', 'LOGT', 'VILLA', 'BIS', 'TER', 'BLOC', 'PARCELLE', 'SECTEUR', 'FOYER', 'RESIDENCE']
+		self.class_secteur = ['III', 'II', 'IIIG-I', 'III-I', 'IIIH-I', 'IIA', 'IIB', 'IIC', 'IID', 'IIN','IIO','IIS','IIIJ','IIIL','IIIN']
+		self.all_orientation =['AMBONY', 'AMBANY', 'AVOFOANY', 'AFOVONY', 'AFOVOANY', 'ANTSINANA', 'ANDREFANA', 'AVARATRA', 'ATSIMO', 'ATSINANANA', 'CENTRE', 'SUD', 'NORD', 'OUEST', 'EST', 'CITE', 'BLOC', 'TANANA', 'NORD-EST','NORD-OUEST', 'NE','NO', 'SUD-EST','SUD-OUEST', 'SE','SO']
+		self.all_orientation_vrai =['AMBONY', 'AMBANY', 'AFOVOANY', 'AFOVOANY', 'AFOVOANY', 'ATSINANA', 'ANDREFANA', 'AVARATRA', 'ATSIMO', 'ATSINANANA', 'AFOVOANY', 'ATSIMO', 'AVARATRA', 'ANDREFANA', 'ATSINANANA', 'CITE', 'BLOC', 'TANANA', 'AVARATRA ATSINANANA', 'AVARATRA AANDREFANA', 'AVARATRA ATSINANANA', 'AVARATRA ANDREFANA', 'ATSIMO ATSINANANA', 'ATSIMO ANDREFANA', 'ATSIMO ATSINANANA', 'ATSIMO ANDREFANA']
 
             
         
